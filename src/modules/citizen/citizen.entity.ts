@@ -15,12 +15,12 @@ export class Citizen extends Model<Citizen> {
     allowNull: false,
   })
   id: number;
-
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
   firstname: string;
+
   @Column({
     type: DataType.STRING,
     allowNull: false,
@@ -29,7 +29,6 @@ export class Citizen extends Model<Citizen> {
 
   @Column({
     type: DataType.DATE,
-    unique: true,
     allowNull: false,
   })
   dob: Date;
