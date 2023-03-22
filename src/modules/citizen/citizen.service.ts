@@ -6,7 +6,7 @@ import { CitizenDto } from './dto/citizen.dto';
 @Injectable()
 export class CitizenService {
     constructor(
-        @Inject('CITIZEN_REPOSITORY') private citizenRepository: typeof Citizen
+        @Inject(CITIZEN_REPOSITORY) private citizenRepository: typeof Citizen
     ) {}
     async create(citizen: CitizenDto): Promise<Citizen> {
         return await this.citizenRepository.create<Citizen>(citizen);

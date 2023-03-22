@@ -5,6 +5,8 @@ import {
   DataType,
   PrimaryKey,
 } from 'sequelize-typescript';
+import { PINCODE_PRIMARY_KEY } from 'src/core/constants';
+import { PincodeCity } from 'src/modules/pincode-entity/entities/pincode-entity.entity';
 
 @Table
 export class Citizen extends Model<Citizen> {
@@ -36,6 +38,10 @@ export class Citizen extends Model<Citizen> {
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
+    references: {
+      model: PincodeCity,
+      key: PINCODE_PRIMARY_KEY,
+    },
   })
   pincode: number;
 
