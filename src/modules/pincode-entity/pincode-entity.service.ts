@@ -19,15 +19,17 @@ export class PincodeEntityService {
     return this.pincodeCityRepository.findAll();
   }
 
-  findOne(id: number) {
-    return this.pincodeCityRepository.findOne({ where: { id } }); 
+  findOne(pin_code: number) {
+    return this.pincodeCityRepository.findOne({ where: { pin_code } });
   }
 
-  update(id: number, updatePincodeEntityDto: UpdatePincodeEntityDto) {
-    return this.pincodeCityRepository.update(updatePincodeEntityDto, { where: { id } });
+  update(pin_code: number, updatePincodeEntityDto: UpdatePincodeEntityDto) {
+    return this.pincodeCityRepository.update(updatePincodeEntityDto, {
+      where: { pin_code },
+    });
   }
 
-  remove(id: number) {
-    return this.pincodeCityRepository.destroy({ where: { id } });
+  remove(pin_code: number) {
+    return this.pincodeCityRepository.destroy({ where: { pin_code } });
   }
 }

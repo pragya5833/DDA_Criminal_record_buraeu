@@ -7,7 +7,7 @@ import { CitizenModule } from './modules/citizen/citizen.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { PincodeEntityModule } from './modules/pincode-entity/pincode-entity.module';
 import { PoliceStationModule } from './modules/police-station/police-station.module';
-
+import { CitizenAadharModule } from './modules/citizen_aadhar/citizen_aadhar.module';
 
 @Module({
   imports: [
@@ -17,6 +17,7 @@ import { PoliceStationModule } from './modules/police-station/police-station.mod
     AuthModule,
     PincodeEntityModule,
     PoliceStationModule,
+    CitizenAadharModule,
   ],
   controllers: [AppController],
   providers: [AppService],

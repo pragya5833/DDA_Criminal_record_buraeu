@@ -18,18 +18,18 @@ export class PoliceStationService {
     return this.policeStationRepository.findAll();
   }
 
-  findOne(id: number) {
-    return this.policeStationRepository.findOne({ where: { id } });
+  findOne(code: number) {
+    return this.policeStationRepository.findOne({ where: { code } });
   }
 
-  update(id: number, updatePoliceStationDto: UpdatePoliceStationDto) {
+  update(code: number, updatePoliceStationDto: UpdatePoliceStationDto) {
     return this.policeStationRepository.update(updatePoliceStationDto, {
-      where: { id },
+      where: { code },
     });
   }
 
-  remove(id: number) {
-    return this.policeStationRepository.destroy({ where: { id } });
+  remove(code: number) {
+    return this.policeStationRepository.destroy({ where: { code } });
   }
 
   findByPinCode(pin_code: number) {

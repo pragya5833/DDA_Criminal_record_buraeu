@@ -2,6 +2,7 @@ import { Sequelize } from 'sequelize-typescript';
 import { Citizen } from 'src/modules/citizen/citizen.entity';
 import { PoliceStation } from 'src/modules/police-station/entities/police-station.entity';
 import { PincodeCity } from 'src/modules/pincode-entity/entities/pincode-entity.entity';
+import { CitizenAadhar } from 'src/modules/citizen_aadhar/entities/citizen_aadhar.entity';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 
@@ -24,7 +25,7 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize({ ...config, alter: true });
-      sequelize.addModels([PincodeCity, Citizen, PoliceStation]);
+      sequelize.addModels([PincodeCity, Citizen, PoliceStation, CitizenAadhar]);
       await sequelize.sync({ alter: true });
       return sequelize;
     },

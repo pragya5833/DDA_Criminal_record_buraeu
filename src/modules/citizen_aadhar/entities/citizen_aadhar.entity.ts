@@ -1,0 +1,31 @@
+import {
+  Column,
+  PrimaryKey,
+  Table,
+  DataType,
+  Model,
+} from 'sequelize-typescript';
+
+import { Citizen } from '../../citizen/citizen.entity';
+import { CITIZEN_PRIMARY_KEY } from 'src/core/constants';
+
+@Table
+export class CitizenAadhar extends Model<CitizenAadhar> {
+  @PrimaryKey
+  @Column({
+    type: DataType.INTEGER,
+    references: {
+      model: Citizen,
+      key: CITIZEN_PRIMARY_KEY,
+    },
+    allowNull: false,
+    unique: true,
+  })
+  citizen_id: number;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  aadhar_number: string;
+}
