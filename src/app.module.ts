@@ -8,6 +8,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { PincodeEntityModule } from './modules/pincode-entity/pincode-entity.module';
 import { PoliceStationModule } from './modules/police-station/police-station.module';
 import { CitizenAadharModule } from './modules/citizen_aadhar/citizen_aadhar.module';
+import { CitizenPhoneModule } from './modules/citizen_phone/citizen_phone.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CitizenAadharModule } from './modules/citizen_aadhar/citizen_aadhar.mod
     PincodeEntityModule,
     PoliceStationModule,
     CitizenAadharModule,
+    CitizenPhoneModule,
   ],
   controllers: [AppController],
   providers: [AppService],
