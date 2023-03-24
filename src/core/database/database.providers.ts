@@ -4,6 +4,7 @@ import { PoliceStation } from 'src/modules/police-station/entities/police-statio
 import { PincodeCity } from 'src/modules/pincode-entity/entities/pincode-entity.entity';
 import { CitizenAadhar } from 'src/modules/citizen_aadhar/entities/citizen_aadhar.entity';
 import { CitizenPhone } from 'src/modules/citizen_phone/entities/citizen_phone.entity';
+import { Admin } from 'src/modules/admin/entities/admin.entity';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 
@@ -32,6 +33,7 @@ export const databaseProviders = [
         PoliceStation,
         CitizenAadhar,
         CitizenPhone,
+        Admin,
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;

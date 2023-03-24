@@ -9,6 +9,7 @@ import { PincodeEntityModule } from './modules/pincode-entity/pincode-entity.mod
 import { PoliceStationModule } from './modules/police-station/police-station.module';
 import { CitizenAadharModule } from './modules/citizen_aadhar/citizen_aadhar.module';
 import { CitizenPhoneModule } from './modules/citizen_phone/citizen_phone.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CitizenPhoneModule } from './modules/citizen_phone/citizen_phone.module
     PoliceStationModule,
     CitizenAadharModule,
     CitizenPhoneModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
