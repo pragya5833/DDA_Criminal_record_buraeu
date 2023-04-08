@@ -10,7 +10,7 @@ import { PoliceStationModule } from './modules/police-station/police-station.mod
 import { CitizenAadharModule } from './modules/citizen_aadhar/citizen_aadhar.module';
 import { CitizenPhoneModule } from './modules/citizen_phone/citizen_phone.module';
 import { AdminModule } from './modules/admin/admin.module';
-
+import { ComplaintsModule } from './modules/complaints/complaints.module';
 @Module({
   imports: [
     DatabaseModule,
@@ -22,6 +22,7 @@ import { AdminModule } from './modules/admin/admin.module';
     CitizenAadharModule,
     CitizenPhoneModule,
     AdminModule,
+    ComplaintsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

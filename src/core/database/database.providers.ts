@@ -7,6 +7,8 @@ import { CitizenPhone } from 'src/modules/citizen_phone/entities/citizen_phone.e
 import { Admin } from 'src/modules/admin/entities/admin.entity';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
+import { Complaint } from 'src/modules/complaints/entities/complaint.entity';
+import { ComplaintAgainst } from 'src/modules/complaints/entities/complaint_against.entity';
 
 export const databaseProviders = [
   {
@@ -34,6 +36,8 @@ export const databaseProviders = [
         CitizenAadhar,
         CitizenPhone,
         Admin,
+        Complaint,
+        ComplaintAgainst,
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;
