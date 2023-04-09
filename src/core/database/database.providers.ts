@@ -9,6 +9,7 @@ import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 import { Complaint } from 'src/modules/complaints/entities/complaint.entity';
 import { ComplaintAgainst } from 'src/modules/complaints/entities/complaint_against.entity';
+import { ComplaintUpdates } from 'src/modules/complaints/entities/complaint_updates.entity';
 
 export const databaseProviders = [
   {
@@ -38,6 +39,7 @@ export const databaseProviders = [
         Admin,
         Complaint,
         ComplaintAgainst,
+        ComplaintUpdates,
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;

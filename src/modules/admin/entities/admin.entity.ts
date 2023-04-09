@@ -36,6 +36,7 @@ import {
 
 @Table
 export class Admin extends Model<Admin> {
+  @ForeignKey(() => Citizen)
   @Column({
     type: DataType.INTEGER,
     references: {
@@ -46,6 +47,7 @@ export class Admin extends Model<Admin> {
   })
   citizen_id: number;
 
+  @ForeignKey(() => PoliceStation)
   @Column({
     type: DataType.INTEGER,
     references: {
