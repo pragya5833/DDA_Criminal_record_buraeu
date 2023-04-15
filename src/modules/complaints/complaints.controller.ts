@@ -23,7 +23,6 @@ export class ComplaintsController {
   @UseGuards(AuthGuard('jwt'))
   @Post()
   create(@Body() complaintDto: ComplaintDTO, @Req() req: Request) {
-    console.log(req.user);
     return this.complaintsService.create(complaintDto, req.user);
   }
 
@@ -31,7 +30,7 @@ export class ComplaintsController {
   findAll() {
     return this.complaintsService.findAll();
   }
-  
+
   @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   findOne(@Param('id') id: string) {

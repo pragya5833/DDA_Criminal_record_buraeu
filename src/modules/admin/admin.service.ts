@@ -22,6 +22,10 @@ export class AdminService {
     return this.adminRepository.findOne({ where: { id } });
   }
 
+  findOneWithCitizenId(id: number) {
+    return this.adminRepository.findOne({ where: { citizen_id: id } });
+  }
+
   update(id: number, updateAdminDto: UpdateAdminDto) {
     return this.adminRepository.update(updateAdminDto, { where: { id } });
   }

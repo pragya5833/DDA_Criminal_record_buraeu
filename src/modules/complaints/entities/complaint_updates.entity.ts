@@ -10,7 +10,7 @@ import {
 import {
   ADMIN_PRIMARY_KEY,
   CITIZEN_PRIMARY_KEY,
-  CMPLAINT_PRIMARY_KEY,
+  COMPLAINT_PRIMARY_KEY,
   Complaint_Status,
 } from 'src/core/constants';
 import { Admin } from 'src/modules/admin/entities/admin.entity';
@@ -25,7 +25,7 @@ export class ComplaintUpdates extends Model<ComplaintUpdates> {
     allowNull: false,
     references: {
       model: Complaint,
-      key: CMPLAINT_PRIMARY_KEY,
+      key: COMPLAINT_PRIMARY_KEY,
     },
   })
   complaint_id: number;

@@ -3,11 +3,13 @@ import { JwtService } from '@nestjs/jwt';
 
 import { CitizenService } from '../citizen/citizen.service';
 import * as bcrypt from 'bcrypt';
+import { AdminService } from '../admin/admin.service';
 @Injectable()
 export class AuthService {
   constructor(
     private readonly citizenService: CitizenService,
     private readonly jwtService: JwtService,
+    private readonly adminService: AdminService,
   ) {}
 
   async validateUser(citizenId: number, password: string): Promise<any> {
@@ -25,6 +27,14 @@ export class AuthService {
     }
     const { password: _, ...result } = citizenData;
     return result;
+  }
+  async validateAdmin(citizenId: number, password: string): Promise<any> {
+    const admin = await this.adminService.findOneWithCitizenId(citizenId);
+    if (!admin) {
+      return null;
+    }
+    const adminData = admin['dataValues'];
+    return adminData;
   }
 
   public async login(citizen: any) {

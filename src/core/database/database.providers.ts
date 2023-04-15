@@ -10,6 +10,9 @@ import { databaseConfig } from './database.config';
 import { Complaint } from 'src/modules/complaints/entities/complaint.entity';
 import { ComplaintAgainst } from 'src/modules/complaints/entities/complaint_against.entity';
 import { ComplaintUpdates } from 'src/modules/complaints/entities/complaint_updates.entity';
+import { Fir } from 'src/modules/fir/entities/fir.entity';
+import { FirAgainst } from 'src/modules/fir/entities/fir_against.entity';
+import { FirUpdates } from 'src/modules/fir/entities/fir_updates.entity';
 
 export const databaseProviders = [
   {
@@ -40,6 +43,9 @@ export const databaseProviders = [
         Complaint,
         ComplaintAgainst,
         ComplaintUpdates,
+        Fir,
+        FirAgainst,
+        FirUpdates,
       ]);
       await sequelize.sync({ alter: true });
       return sequelize;

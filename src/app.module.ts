@@ -11,6 +11,7 @@ import { CitizenAadharModule } from './modules/citizen_aadhar/citizen_aadhar.mod
 import { CitizenPhoneModule } from './modules/citizen_phone/citizen_phone.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { ComplaintsModule } from './modules/complaints/complaints.module';
+import { FirModule } from './modules/fir/fir.module';
 @Module({
   imports: [
     DatabaseModule,
@@ -23,6 +24,7 @@ import { ComplaintsModule } from './modules/complaints/complaints.module';
     CitizenPhoneModule,
     AdminModule,
     ComplaintsModule,
+    FirModule
   ],
   controllers: [AppController],
   providers: [AppService],

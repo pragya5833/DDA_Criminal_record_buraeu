@@ -1,19 +1,18 @@
 import {
   Column,
-  PrimaryKey,
   Table,
   DataType,
   Model,
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
-import { CITIZEN_PRIMARY_KEY, COMPLAINT_PRIMARY_KEY } from 'src/core/constants';
+import { CITIZEN_PRIMARY_KEY, FIR_PRIMARY_KEY } from 'src/core/constants';
 
 import { Citizen } from '../../citizen/citizen.entity';
-import { Complaint } from './complaint.entity';
+import { Fir } from './fir.entity';
 
 @Table
-export class ComplaintAgainst extends Model<ComplaintAgainst> {
+export class FirAgainst extends Model<FirAgainst> {
   @ForeignKey(() => Citizen)
   @Column({
     type: DataType.INTEGER,
@@ -23,19 +22,19 @@ export class ComplaintAgainst extends Model<ComplaintAgainst> {
     },
     allowNull: false,
   })
-  citizen_against: number;
+  fir_against: number;
 
-  @ForeignKey(() => Complaint)
+  @ForeignKey(() => Fir)
   @Column({
     type: DataType.INTEGER,
     references: {
-      model: Complaint,
-      key: COMPLAINT_PRIMARY_KEY,
+      model: Fir,
+      key: FIR_PRIMARY_KEY,
     },
     allowNull: false,
   })
-  complaint_id: number;
+  fir_id: number;
 
-  @BelongsTo(() => Citizen, { foreignKey: 'citizen_against' })
+  @BelongsTo(() => Citizen, { foreignKey: 'fir_against' })
   citizen: Citizen;
 }
