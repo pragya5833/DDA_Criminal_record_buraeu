@@ -4,6 +4,7 @@ import {
   Model,
   DataType,
   PrimaryKey,
+  Index,
 } from 'sequelize-typescript';
 import { PINCODE_PRIMARY_KEY } from 'src/core/constants';
 import { PincodeCity } from 'src/modules/pincode-entity/entities/pincode-entity.entity';
@@ -34,7 +35,7 @@ export class Citizen extends Model<Citizen> {
     allowNull: false,
   })
   dob: Date;
-
+  @Index
   @Column({
     type: DataType.INTEGER,
     allowNull: false,

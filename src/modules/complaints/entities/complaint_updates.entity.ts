@@ -6,6 +6,7 @@ import {
   Model,
   ForeignKey,
   BelongsTo,
+  Index,
 } from 'sequelize-typescript';
 import {
   ADMIN_PRIMARY_KEY,
@@ -20,6 +21,7 @@ import { Complaint } from './complaint.entity';
 @Table
 export class ComplaintUpdates extends Model<ComplaintUpdates> {
   @ForeignKey(() => Complaint)
+  @Index
   @Column({
     type: DataType.INTEGER,
     allowNull: false,

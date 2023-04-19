@@ -4,6 +4,7 @@ import {
   Table,
   DataType,
   Model,
+  Index,
 } from 'sequelize-typescript';
 
 import { Citizen } from '../../citizen/citizen.entity';
@@ -22,6 +23,7 @@ export class CitizenPhone extends Model<CitizenPhone> {
   })
   citizen_id: number;
 
+  @Index
   @Column({
     type: DataType.STRING(10),
     allowNull: false,

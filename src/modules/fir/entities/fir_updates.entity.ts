@@ -1,5 +1,5 @@
 import {
-    Column, DataType, ForeignKey, Model, Table
+    Column, DataType, ForeignKey, Index, Model, Table
 } from 'sequelize-typescript';
 import {
     ADMIN_PRIMARY_KEY,
@@ -12,6 +12,7 @@ import { Fir } from './fir.entity';
 @Table
 export class FirUpdates extends Model<FirUpdates> {
   @ForeignKey(() => Fir)
+  @Index
   @Column({
     type: DataType.INTEGER,
     allowNull: false,

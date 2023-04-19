@@ -5,6 +5,7 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
+  Index,
 } from 'sequelize-typescript';
 import { Citizen } from 'src/modules/citizen/citizen.entity';
 import { PoliceStation } from 'src/modules/police-station/entities/police-station.entity';
@@ -37,6 +38,7 @@ import {
 @Table
 export class Admin extends Model<Admin> {
   @ForeignKey(() => Citizen)
+  @Index
   @Column({
     type: DataType.INTEGER,
     references: {
@@ -48,6 +50,7 @@ export class Admin extends Model<Admin> {
   citizen_id: number;
 
   @ForeignKey(() => PoliceStation)
+  @Index
   @Column({
     type: DataType.INTEGER,
     references: {

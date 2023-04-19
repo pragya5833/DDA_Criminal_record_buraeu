@@ -4,6 +4,7 @@ import {
   Table,
   DataType,
   Model,
+  Index,
 } from 'sequelize-typescript';
 import { PincodeCity } from 'src/modules/pincode-entity/entities/pincode-entity.entity';
 import { PINCODE_PRIMARY_KEY } from 'src/core/constants';
@@ -25,6 +26,7 @@ export class PoliceStation extends Model<PoliceStation> {
   })
   street: string;
 
+  @Index
   @Column({
     type: DataType.INTEGER,
     references: {

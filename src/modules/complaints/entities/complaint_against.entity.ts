@@ -6,6 +6,7 @@ import {
   Model,
   ForeignKey,
   BelongsTo,
+  Index,
 } from 'sequelize-typescript';
 import { CITIZEN_PRIMARY_KEY, COMPLAINT_PRIMARY_KEY } from 'src/core/constants';
 
@@ -15,6 +16,7 @@ import { Complaint } from './complaint.entity';
 @Table
 export class ComplaintAgainst extends Model<ComplaintAgainst> {
   @ForeignKey(() => Citizen)
+  @Index
   @Column({
     type: DataType.INTEGER,
     references: {
@@ -26,6 +28,7 @@ export class ComplaintAgainst extends Model<ComplaintAgainst> {
   citizen_against: number;
 
   @ForeignKey(() => Complaint)
+  @Index
   @Column({
     type: DataType.INTEGER,
     references: {

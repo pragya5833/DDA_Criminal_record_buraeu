@@ -3,6 +3,7 @@ import {
   Column,
   DataType,
   ForeignKey,
+  Index,
   Model,
   Table,
 } from 'sequelize-typescript';
@@ -18,6 +19,7 @@ import { Complaint } from 'src/modules/complaints/entities/complaint.entity';
 @Table
 export class Fir extends Model<Fir> {
   @ForeignKey(() => Complaint)
+  @Index
   @Column({
     type: DataType.INTEGER,
     references: {
@@ -36,6 +38,7 @@ export class Fir extends Model<Fir> {
   fir_status: Fir_Status;
 
   @ForeignKey(() => Admin)
+  @Index
   @Column({
     type: DataType.INTEGER,
     references: {

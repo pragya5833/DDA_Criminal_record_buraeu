@@ -4,6 +4,7 @@ import {
   Table,
   DataType,
   Model,
+  Index,
 } from 'sequelize-typescript';
 
 import { Citizen } from '../../citizen/citizen.entity';
@@ -23,6 +24,7 @@ export class CitizenAadhar extends Model<CitizenAadhar> {
   })
   citizen_id: number;
 
+  @Index
   @Column({
     type: DataType.STRING,
     allowNull: false,

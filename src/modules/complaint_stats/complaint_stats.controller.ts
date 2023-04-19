@@ -15,4 +15,14 @@ export class ComplaintStatsController {
       citizenId,
     );
   }
+
+  @Get('/getAllStattionsComplaintCounts')
+  getAllStattionsComplaintCounts() {
+    return this.complaintStatsService.getAllStattionsComplaintCounts();
+  }
+
+  @Get('/getAllPincodeComplaintCounts')
+  getAllPincodeComplaintCounts() {
+    return this.complaintStatsService.getAllPincodeComplaintCounts();
+  }
 }

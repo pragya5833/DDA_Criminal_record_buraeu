@@ -6,6 +6,7 @@ import {
   Model,
   ForeignKey,
   BelongsTo,
+  Index,
 } from 'sequelize-typescript';
 
 import { Citizen } from '../../citizen/citizen.entity';
@@ -14,6 +15,7 @@ import { PoliceStation } from 'src/modules/police-station/entities/police-statio
 import { Complaint_Status } from 'src/core/constants';
 @Table
 export class Complaint extends Model<Complaint> {
+  @Index
   @Column({
     type: DataType.INTEGER,
     references: {
@@ -24,6 +26,7 @@ export class Complaint extends Model<Complaint> {
   })
   created_by: number;
 
+  @Index
   @Column({
     type: DataType.ENUM(...Object.values(Complaint_Status)),
     allowNull: false,
@@ -32,6 +35,7 @@ export class Complaint extends Model<Complaint> {
   complaint_status: Complaint_Status;
   
   @ForeignKey(() => PoliceStation)
+  @Index
   @Column({
     type: DataType.INTEGER,
     references: {
