@@ -12,6 +12,7 @@ import { CitizenPhoneModule } from './modules/citizen_phone/citizen_phone.module
 import { AdminModule } from './modules/admin/admin.module';
 import { ComplaintsModule } from './modules/complaints/complaints.module';
 import { FirModule } from './modules/fir/fir.module';
+import { ComplaintStatsModule } from './modules/complaint_stats/complaint_stats.module';
 @Module({
   imports: [
     DatabaseModule,
@@ -24,7 +25,8 @@ import { FirModule } from './modules/fir/fir.module';
     CitizenPhoneModule,
     AdminModule,
     ComplaintsModule,
-    FirModule
+    FirModule,
+    ComplaintStatsModule
   ],
   controllers: [AppController],
   providers: [AppService],

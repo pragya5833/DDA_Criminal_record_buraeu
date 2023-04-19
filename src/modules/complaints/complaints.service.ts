@@ -12,6 +12,7 @@ import { Inject } from '@nestjs/common';
 import { ComplaintAgainst } from './entities/complaint_against.entity';
 import { CreateComplaintAgainstDto } from './dto/create-complain-against.dto';
 import { ComplaintUpdates } from './entities/complaint_updates.entity';
+import { Citizen } from '../citizen/citizen.entity';
 
 @Injectable()
 export class ComplaintsService {
@@ -128,7 +129,7 @@ export class ComplaintsService {
     });
     const complaintAgainstData = await this.complainAgainstRepository.findAll({
       where: { complaint_id: id },
-      include: ['citizen'],
+      include: ['citizenAgainst'],
     });
     // console.log(complaintAgainstData);
     return { complaintData, complaint_against: [...complaintAgainstData] };
@@ -140,5 +141,47 @@ export class ComplaintsService {
 
   remove(id: number) {
     return `This action removes a #${id} complaint`;
+  }
+
+  private async getComplaintsAgainstByComplaintId(
+    complaintId: number,
+  ): Promise<ComplaintAgainst[]> {
+    return await ComplaintAgainst.findAll({
+      where: { complaint_id: complaintId },
+      include: ['citizenAgainst'],
+    });
+  }
+
+  private async getComplaintsByCitizen(
+    citizenId: number,
+  ): Promise<Complaint[]> {
+    return await Complaint.findAll({
+      where: { created_by: citizenId },
+      include: ['police_station'],
+    });
+  }
+
+  async getAllComplaintsRaisedByUser(citizenId: number) {
+    const complaints: any[] = await this.getComplaintsByCitizen(citizenId);
+    const allComplaintsData = [];
+
+    for (const complaint of complaints) {
+      const complaintData = { ...complaint.dataValues };
+      complaintData.complaintsAgainst =
+        await this.getComplaintsAgainstByComplaintId(complaint.id);
+      allComplaintsData.push(complaintData);
+    }
+    return allComplaintsData;
+  }
+
+  private async getComplaintsAgainstByCitizen(citizenId: number) {
+    return await ComplaintAgainst.findAll({
+      where: { citizen_against: citizenId },
+      include: ['complaintData'],
+    });
+  }
+
+  getAllComplaintsRaisedAgainstUser(citizenId: number) {
+    return this.getComplaintsAgainstByCitizen(citizenId);
   }
 }

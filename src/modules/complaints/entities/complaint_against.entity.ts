@@ -37,5 +37,8 @@ export class ComplaintAgainst extends Model<ComplaintAgainst> {
   complaint_id: number;
 
   @BelongsTo(() => Citizen, { foreignKey: 'citizen_against' })
-  citizen: Citizen;
+  citizenAgainst: Citizen;
+
+  @BelongsTo(() => Complaint, { foreignKey: 'complaint_id' })
+  complaintData: Complaint;
 }
