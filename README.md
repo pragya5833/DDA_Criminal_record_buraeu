@@ -8,3 +8,7 @@ Add your Postgres credentials in .env.sample and save it as .env
 To start the server in local:
 npm install
 npm run start:dev
+
+Postman Collection and DB backup placed in folders :
+Postman_collection
+DB_backup

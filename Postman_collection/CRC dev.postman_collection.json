@@ -1,0 +1,815 @@
+{
+	"info": {
+		"_postman_id": "b3e763f7-04d5-4f02-b963-d66f3a1bec82",
+		"name": "CRC dev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pincodeCity",
+			"item": [
+				{
+					"name": "create pincode_city",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pin_code",
+									"value": "560088",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Varthur",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "Karnataka",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/pincodecity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"pincodecity"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PoliceStation",
+			"item": [
+				{
+					"name": "create police station",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "code",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Varthur police station",
+									"type": "text"
+								},
+								{
+									"key": "street",
+									"value": "Gunjur vartur road",
+									"type": "text"
+								},
+								{
+									"key": "pin_code",
+									"value": "560088",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/policeStation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"policeStation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all police stations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/policeStation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"policeStation"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Citizen_Aadhar",
+			"item": [
+				{
+					"name": "citizenAadhar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "citizen_id",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "aadhar_number",
+									"value": "4567891012123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/citizenAadhar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"citizenAadhar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all citizen aadhar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/citizenAadhar/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"citizenAadhar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get citizen aadhar by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/citizenAadhar/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"citizenAadhar",
+								"20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Citizen_Phone",
+			"item": [
+				{
+					"name": "citizenPhone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "citizen_id",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "9901865397",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/citizenPhone",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"citizenPhone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all citizen phone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/citizenPhone/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"citizenPhone",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get citizen phone by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/citizenPhone/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"citizenPhone",
+								"20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "admin create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "citizen_id",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "police_station_code",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all admins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/admin/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch admin",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "police_station_code",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/admin/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Complaints",
+			"item": [
+				{
+					"name": "create complaint",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "citizen_against[]",
+									"value": "18",
+									"type": "text"
+								},
+								{
+									"key": "station_code",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "citizen_against[]",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/complaints",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"complaints"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get complaints",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/complaints/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"complaints",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all complaints",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZpcnN0bmFtZSI6InByYWd5YSAiLCJsYXN0bmFtZSI6ImJoYXJ0aSIsImRvYiI6IjE5OTItMTItMTBUMDA6MDA6MDAuMDAwWiIsInBpbmNvZGUiOjU2MDA4NywiaG91c2Vfbm8iOjE0MDUsImZsYXRfbm8iOjE0MDUsImNyZWF0ZWRBdCI6IjIwMjMtMDMtMjJUMTM6NTM6MjMuNzE5WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDMtMjJUMTM6NTM6MjMuNzE5WiIsImlhdCI6MTY4MDk2MDM1NywiZXhwIjoxNjgxMTMzMTU3fQ.lkdYjMFFguz-u9tQeWwKNItvAYCAl2rWu7UUTro3taQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/complaints",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"complaints"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fir",
+			"item": [
+				{
+					"name": "create fir",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fir_against[]",
+									"value": "18",
+									"type": "text"
+								},
+								{
+									"key": "station_code",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "fir_against[]",
+									"value": "17",
+									"type": "text"
+								},
+								{
+									"key": "complaint_id",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/fir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"fir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get fir",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZpcnN0bmFtZSI6InByYWd5YSAiLCJsYXN0bmFtZSI6ImJoYXJ0aSIsImRvYiI6IjE5OTItMTItMTBUMDA6MDA6MDAuMDAwWiIsInBpbmNvZGUiOjU2MDA4NywiaG91c2Vfbm8iOjE0MDUsImZsYXRfbm8iOjE0MDUsImNyZWF0ZWRBdCI6IjIwMjMtMDMtMjJUMTM6NTM6MjMuNzE5WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDMtMjJUMTM6NTM6MjMuNzE5WiIsImlhdCI6MTY4MDk2MDM1NywiZXhwIjoxNjgxMTMzMTU3fQ.lkdYjMFFguz-u9tQeWwKNItvAYCAl2rWu7UUTro3taQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/fir/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"fir",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all fir",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZpcnN0bmFtZSI6InByYWd5YSAiLCJsYXN0bmFtZSI6ImJoYXJ0aSIsImRvYiI6IjE5OTItMTItMTBUMDA6MDA6MDAuMDAwWiIsInBpbmNvZGUiOjU2MDA4NywiaG91c2Vfbm8iOjE0MDUsImZsYXRfbm8iOjE0MDUsImNyZWF0ZWRBdCI6IjIwMjMtMDMtMjJUMTM6NTM6MjMuNzE5WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDMtMjJUMTM6NTM6MjMuNzE5WiIsImlhdCI6MTY4MDk2MDM1NywiZXhwIjoxNjgxMTMzMTU3fQ.lkdYjMFFguz-u9tQeWwKNItvAYCAl2rWu7UUTro3taQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/fir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"fir"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "complaints_stats",
+			"item": [
+				{
+					"name": "complaintsRaisedAgainstCitizen",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/complaint-stats/getAllComplaintsRaisedAgainstUser/18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"complaint-stats",
+								"getAllComplaintsRaisedAgainstUser",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "complaintsRaisedByCitizen",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/complaint-stats/getAllComplaintsRaisedByUser/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"complaint-stats",
+								"getAllComplaintsRaisedByUser",
+								"20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "create_citizen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "Shavinder",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "bharti",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "testPassword",
+							"type": "text"
+						},
+						{
+							"key": "dob",
+							"value": "1992-12-10",
+							"type": "text"
+						},
+						{
+							"key": "house_no",
+							"value": "1405",
+							"type": "text"
+						},
+						{
+							"key": "flat_no",
+							"value": "1405",
+							"type": "text"
+						},
+						{
+							"key": "pincode",
+							"value": "560087",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "testPassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "testPassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "adminToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImZpcnN0bmFtZSI6IlNoYXZpbmRlciIsImxhc3RuYW1lIjoiYmhhcnRpIiwiZG9iIjoiMTk5Mi0xMi0xMFQwMDowMDowMC4wMDBaIiwicGluY29kZSI6NTYwMDg3LCJob3VzZV9ubyI6MTQwNSwiZmxhdF9ubyI6MTQwNSwiY3JlYXRlZEF0IjoiMjAyMy0wMy0yMlQxMzo1NDoyNy41MzRaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0yMlQxMzo1NDoyNy41MzRaIiwiaWF0IjoxNjgxMDQ4NDI4LCJleHAiOjE2ODEyMjEyMjh9.s5-NrOBv6FXwuqe9aDN0E8XhgNaOxRjTEf_2VNmbZCM"
+		},
+		{
+			"key": "userToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImZpcnN0bmFtZSI6IlNoYXZpbmRlciIsImxhc3RuYW1lIjoiYmhhcnRpIiwiZG9iIjoiMTk5Mi0xMi0xMFQwMDowMDowMC4wMDBaIiwicGluY29kZSI6NTYwMDg3LCJob3VzZV9ubyI6MTQwNSwiZmxhdF9ubyI6MTQwNSwiY3JlYXRlZEF0IjoiMjAyMy0wMy0yMlQxMzo1NDoyNy41MzRaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0yMlQxMzo1NDoyNy41MzRaIiwiaWF0IjoxNjgxMDQ4NDI4LCJleHAiOjE2ODEyMjEyMjh9.s5-NrOBv6FXwuqe9aDN0E8XhgNaOxRjTEf_2VNmbZCM"
+		}
+	]
+}
