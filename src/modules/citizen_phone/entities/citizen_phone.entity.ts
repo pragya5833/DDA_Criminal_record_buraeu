@@ -11,6 +11,7 @@ import { CITIZEN_PRIMARY_KEY } from 'src/core/constants';
 
 @Table
 export class CitizenPhone extends Model<CitizenPhone> {
+  @PrimaryKey
   @Column({
     type: DataType.INTEGER,
     references: {

@@ -26,6 +26,7 @@ export class CitizenAadhar extends Model<CitizenAadhar> {
   @Column({
     type: DataType.STRING,
     allowNull: false,
+    unique: true,
   })
   aadhar_number: string;
 }
