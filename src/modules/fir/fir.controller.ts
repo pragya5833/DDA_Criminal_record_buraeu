@@ -24,7 +24,7 @@ export class FirController {
   @UseGuards(AuthGuard('jwt'))
   create(@Body() firDTO: FirDTO, @Req() req: Request) {
     console.log(firDTO);
-    return this.firService.create(firDTO, req.user);
+    return this.firService.createWithTransactions(firDTO, req.user);
   }
 
   @Get()
@@ -38,8 +38,17 @@ export class FirController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFirDto: UpdateFirDto) {
-    return this.firService.update(+id, updateFirDto);
+  @UseGuards(AuthGuard('jwt'))
+  update(
+    @Param('id') id: string,
+    @Body() updateFirDto: UpdateFirDto,
+    @Req() req: Request,
+  ) {
+    return this.firService.updateWithStoredProcedure(
+      +id,
+      updateFirDto,
+      req.user,
+    );
   }
 
   @Delete(':id')

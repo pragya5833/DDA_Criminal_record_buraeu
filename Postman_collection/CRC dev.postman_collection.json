@@ -392,7 +392,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{userToken}}",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImZpcnN0bmFtZSI6InByYWd5YV92YXJ0aHVyIiwibGFzdG5hbWUiOiJiaGFydGkiLCJkb2IiOiIxOTkyLTEyLTEwVDAwOjAwOjAwLjAwMFoiLCJwaW5jb2RlIjo1NjAwODgsImhvdXNlX25vIjoxNDA1LCJmbGF0X25vIjoxNDA1LCJjcmVhdGVkQXQiOiIyMDIzLTAzLTIyVDEzOjUzOjM3LjA2OVoiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTIyVDEzOjUzOjM3LjA2OVoiLCJpYXQiOjE2ODI0MzUzODksImV4cCI6MTY4MjYwODE4OX0.ObFR2He3AJIA_CD3GdVKb1xwPad5vLWRlsVNPW000uc",
 									"type": "string"
 								}
 							]
@@ -409,7 +409,7 @@
 								},
 								{
 									"key": "station_code",
-									"value": "10",
+									"value": "11",
 									"type": "text"
 								},
 								{
@@ -508,7 +508,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{adminToken}}",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImZpcnN0bmFtZSI6IlNoYXZpbmRlciIsImxhc3RuYW1lIjoiYmhhcnRpIiwiZG9iIjoiMTk5Mi0xMi0xMFQwMDowMDowMC4wMDBaIiwicGluY29kZSI6NTYwMDg3LCJob3VzZV9ubyI6MTQwNSwiZmxhdF9ubyI6MTQwNSwiY3JlYXRlZEF0IjoiMjAyMy0wMy0yMlQxMzo1NDoyNy41MzRaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0yMlQxMzo1NDoyNy41MzRaIiwiaXNBZG1pbiI6dHJ1ZSwiYWRtaW4iOnsiaWQiOjUsImNpdGl6ZW5faWQiOjIwLCJwb2xpY2Vfc3RhdGlvbl9jb2RlIjoxMCwiY3JlYXRlZEF0IjoiMjAyMy0wMy0yNFQxNzoyMDoxNy42NzdaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0yNFQxNzoyMzowOS42MzRaIn0sImlhdCI6MTY4MjQzNTY5NiwiZXhwIjoxNjgyNjA4NDk2fQ.VLI31VtGUHlxW3kU6KxOd1pD8eRyhT8J80_2KjWV_wo",
 									"type": "string"
 								}
 							]
@@ -572,7 +572,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/fir/2",
+							"raw": "http://localhost:3000/api/fir/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -581,7 +581,7 @@
 							"path": [
 								"api",
 								"fir",
-								"2"
+								"3"
 							]
 						}
 					},
@@ -612,6 +612,47 @@
 							"path": [
 								"api",
 								"fir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update fir",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImZpcnN0bmFtZSI6IlNoYXZpbmRlciIsImxhc3RuYW1lIjoiYmhhcnRpIiwiZG9iIjoiMTk5Mi0xMi0xMFQwMDowMDowMC4wMDBaIiwicGluY29kZSI6NTYwMDg3LCJob3VzZV9ubyI6MTQwNSwiZmxhdF9ubyI6MTQwNSwiY3JlYXRlZEF0IjoiMjAyMy0wMy0yMlQxMzo1NDoyNy41MzRaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0yMlQxMzo1NDoyNy41MzRaIiwiaXNBZG1pbiI6dHJ1ZSwiYWRtaW4iOnsiaWQiOjUsImNpdGl6ZW5faWQiOjIwLCJwb2xpY2Vfc3RhdGlvbl9jb2RlIjoxMCwiY3JlYXRlZEF0IjoiMjAyMy0wMy0yNFQxNzoyMDoxNy42NzdaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0yNFQxNzoyMzowOS42MzRaIn0sImlhdCI6MTY4MjQzNTY5NiwiZXhwIjoxNjgyNjA4NDk2fQ.VLI31VtGUHlxW3kU6KxOd1pD8eRyhT8J80_2KjWV_wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fir_status",
+									"value": "Investigation",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/fir/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"fir",
+								"3"
 							]
 						}
 					},
@@ -661,6 +702,48 @@
 								"complaint-stats",
 								"getAllComplaintsRaisedByUser",
 								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllStattionsComplaintCounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/complaint-stats/getAllStattionsComplaintCounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"complaint-stats",
+								"getAllStattionsComplaintCounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllStattionsComplaintCounts Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/complaint-stats/getAllStattionsComplaintCounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"complaint-stats",
+								"getAllStattionsComplaintCounts"
 							]
 						}
 					},
@@ -739,7 +822,7 @@
 					"urlencoded": [
 						{
 							"key": "username",
-							"value": "20",
+							"value": "18",
 							"type": "text"
 						},
 						{

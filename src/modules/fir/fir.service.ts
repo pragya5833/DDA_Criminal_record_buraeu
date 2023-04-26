@@ -9,6 +9,8 @@ import { UpdateFirDto } from './dto/update-fir.dto';
 import { Fir } from './entities/fir.entity';
 import { FirAgainst } from './entities/fir_against.entity';
 import { FirUpdates } from './entities/fir_updates.entity';
+import { QueryTypes, Sequelize } from 'sequelize';
+import { SEQUELIZE } from 'src/core/constants';
 
 @Injectable()
 export class FirService {
@@ -21,6 +23,7 @@ export class FirService {
 
     @Inject('FIR_UPDATES_REPOSITORY')
     private firUpdatesRepository: typeof FirUpdates,
+    @Inject(SEQUELIZE) private readonly sequelize: Sequelize, // Inject the Sequelize instance
   ) {}
   async create(firDto: FirDTO, user: any) {
     const firData: CreateFirDto = {
@@ -98,6 +101,65 @@ export class FirService {
     }
   }
 
+  async createWithTransactions(firDto: FirDTO, user: any) {
+    const firData: CreateFirDto = {
+      complaint_id: firDto.complaint_id,
+      admin_id: user.admin.id,
+    };
+
+    // Use a transaction for better control over multiple operations.
+    const t = await this.sequelize.transaction();
+
+    try {
+      const firEntity = await this.firRepository.create(firData, {
+        transaction: t,
+      });
+
+      const fir_update_data: CreateFirUpdatesDto = {
+        fir_id: firEntity.id,
+        admin_id: user.admin.id,
+      };
+      const fir_update_entity = await this.firUpdatesRepository.create(
+        fir_update_data,
+        { transaction: t },
+      );
+
+      const firAgainstEntities = [];
+      for (const citizen of firDto.fir_against) {
+        const firAgainstData: CreateFirAgainstDto = {
+          fir_against: citizen,
+          fir_id: firEntity.id,
+        };
+        const firAgainstEntity = await this.firAgainstRepository.create(
+          firAgainstData,
+          { transaction: t },
+        );
+        firAgainstEntities.push(firAgainstEntity.dataValues);
+      }
+
+      // Commit the transaction if everything went well.
+      await t.commit();
+
+      return {
+        firEntity,
+        firAgainstEntities,
+        fir_update_entity,
+      };
+    } catch (error) {
+      // Rollback the transaction if there was an error.
+      await t.rollback();
+
+      console.log(error);
+      return new HttpException(
+        {
+          message: 'something went wrong while creating complaint',
+          error,
+        },
+        400,
+      );
+    }
+  }
+
   async findAll() {
     const allFirIds = await this.firRepository.findAll({
       attributes: ['id'],
@@ -117,8 +179,72 @@ export class FirService {
     return this.getFirDetails(id);
   }
 
-  update(id: number, updateFirDto: UpdateFirDto) {
-    return `This action updates a #${id} fir`;
+  async update(id: number, updateFirDto: UpdateFirDto, user: any) {
+    const firData = await this.firRepository.findOne({
+      where: { id },
+    });
+    const updateData = {
+      ...updateFirDto,
+      old_status: firData.fir_status,
+      admin_id: user.admin.id,
+      fir_id: id,
+    };
+    try {
+      const firUpdateEntity = await this.firUpdatesRepository.create(
+        updateData,
+      );
+      const firEntity = await this.firRepository.update(updateFirDto, {
+        where: { id },
+      });
+      return { firEntity, firUpdateEntity };
+    } catch (error) {
+      return new HttpException(
+        {
+          message: 'something went wrong while updating fir',
+          error,
+        },
+        400,
+      );
+    }
+  }
+  async updateWithStoredProcedure(
+    id: number,
+    updateFirDto: UpdateFirDto,
+    user: any,
+  ) {
+    const firData = await this.firRepository.findOne({ where: { id } });
+    try {
+      // Call the stored procedure using Sequelize
+      const [result] = await this.sequelize.query(
+        `CALL update_fir_and_insert_update(:id, :fir_status, :admin_id, :old_status, :updated_status);`,
+        {
+          replacements: {
+            id: id,
+            fir_status: updateFirDto.fir_status,
+            admin_id: user.admin.id,
+            old_status: firData.fir_status,
+            updated_status: updateFirDto.fir_status,
+          },
+          type: QueryTypes.RAW,
+        },
+      );
+
+      const firEntity = await this.firRepository.findOne({ where: { id } });
+      const firUpdateEntity = await this.firUpdatesRepository.findOne({
+        where: { fir_id: id },
+        order: [['id', 'DESC']],
+      });
+
+      return { firEntity, firUpdateEntity };
+    } catch (error) {
+      return new HttpException(
+        {
+          message: 'something went wrong while updating fir',
+          error,
+        },
+        400,
+      );
+    }
   }
 
   remove(id: number) {

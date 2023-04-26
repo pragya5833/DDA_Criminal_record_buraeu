@@ -23,7 +23,10 @@ export class ComplaintsController {
   @UseGuards(AuthGuard('jwt'))
   @Post()
   create(@Body() complaintDto: ComplaintDTO, @Req() req: Request) {
-    return this.complaintsService.create(complaintDto, req.user);
+    return this.complaintsService.createWithTransactions(
+      complaintDto,
+      req.user,
+    );
   }
 
   @Get()

@@ -3,6 +3,7 @@ import {
   COMPLAINT_AGAINST_REPOSITORY,
   COMPLAINT_REPOSITORY,
   COMPLAINT_UPDATES_REPOSITORY,
+  SEQUELIZE,
 } from 'src/core/constants';
 import { ComplaintDTO } from './dto/complaint.dto';
 import { CreateComplaintDto } from './dto/create-complaint.dto';
@@ -13,6 +14,7 @@ import { ComplaintAgainst } from './entities/complaint_against.entity';
 import { CreateComplaintAgainstDto } from './dto/create-complain-against.dto';
 import { ComplaintUpdates } from './entities/complaint_updates.entity';
 import { Citizen } from '../citizen/citizen.entity';
+import { Sequelize, Transaction } from 'sequelize';
 
 @Injectable()
 export class ComplaintsService {
@@ -23,6 +25,7 @@ export class ComplaintsService {
     private complainAgainstRepository: typeof ComplaintAgainst,
     @Inject(COMPLAINT_UPDATES_REPOSITORY)
     private complainUpdatesRepository: typeof ComplaintUpdates,
+    @Inject(SEQUELIZE) private readonly sequelize: Sequelize, // Inject the Sequelize instance
   ) {}
 
   async create(complaintDto: ComplaintDTO, user: any) {
@@ -92,6 +95,66 @@ export class ComplaintsService {
         );
       }
     } catch (error) {
+      return new HttpException(
+        {
+          message: 'something went wrong while creating complaint',
+          error,
+        },
+        400,
+      );
+    }
+  }
+
+  async createWithTransactions(complaintDto: ComplaintDTO, user: any) {
+    const complaintData: CreateComplaintDto = {
+      created_by: user.id,
+      station_code: complaintDto.station_code,
+    };
+
+    // Use a transaction for better control over multiple operations.
+    const t = await this.sequelize.transaction();
+
+    try {
+      const complaintEntity = await this.complainRepository.create(
+        complaintData,
+        { transaction: t },
+      );
+
+      const complaint_update_data = {
+        complaint_id: complaintEntity.id,
+        created_by: user.id,
+      };
+      const complaint_update_entity =
+        await this.complainUpdatesRepository.create(complaint_update_data, {
+          transaction: t,
+        });
+
+      const complaintAgainstEntities = [];
+      for (const citizen of complaintDto.citizen_against) {
+        const complaintAgainstData: CreateComplaintAgainstDto = {
+          citizen_against: citizen,
+          complaint_id: complaintEntity.id,
+        };
+        const complaintAgainstEntity =
+          await this.complainAgainstRepository.create(complaintAgainstData, {
+            transaction: t,
+          });
+        complaintAgainstEntities.push(complaintAgainstEntity.dataValues);
+      }
+
+      // Commit the transaction if everything went well.
+      await t.commit();
+
+      return {
+        complaintEntity,
+        complaintAgainstEntities,
+        complaint_update_entity,
+      };
+    } catch (error) {
+      // Rollback the transaction if there was an error.
+      await t.rollback();
+
+      console.log(error);
       return new HttpException(
         {
           message: 'something went wrong while creating complaint',
